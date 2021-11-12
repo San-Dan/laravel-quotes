@@ -41,6 +41,9 @@
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </BreezeDropdownLink>
+                                        <BreezeDropdownLink :href="route('profile')">
+                                            Log Out
+                                        </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
                             </div>

@@ -9,9 +9,24 @@
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
         </div>
 
+        <!-- <div>
+            <BreezeLabel for="firstname" value="Firstname" />
+            <BreezeInput id="firstname" type="text" class="mt-1 block w-full" v-model="form.firstname" required autofocus autocomplete="given-name" />
+        </div>
+
+        <div>
+            <BreezeLabel for="lastname" value="Lastname" />
+            <BreezeInput id="lastname" type="text" class="mt-1 block w-full" v-model="form.lastname"  autofocus autocomplete="family-name" />
+        </div>
+
+        <div>
+            <BreezeLabel for="username" value="Username" />
+            <BreezeInput id="username" type="text" class="mt-1 block w-full" v-model="form.username"  autofocus />
+        </div> -->
+
         <div class="mt-4">
             <BreezeLabel for="email" value="Email" />
-            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
+            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="email" />
         </div>
 
         <div class="mt-4">
