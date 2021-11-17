@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="min-h-screen bg-header">
-            <nav class="bg-header mx-4">
+            <nav class="bg-header">
                 <!-- Primary Navigation Menu -->
                 
                     <div class="flex justify-end h-16">
@@ -12,13 +12,12 @@
                                     <BreezeApplicationLogo
                                         class="block h-9 w-auto"
                                     />
-                                </Link>
-                                
+                                </Link>                                
                             </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <Button>Add Card</Button>
+                            <Button>Add Card </Button>
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <BreezeDropdown align="right" width="48">
@@ -151,14 +150,12 @@
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
-                            <BreezeResponsiveNavLink :href="route('profile')">
                             <div class="font-medium text-base text-gray-800">
                                 {{ $page.props.auth.user.name }}
                             </div>
                             <div class="font-medium text-sm text-gray-500">
                                 {{ $page.props.auth.user.email }}
                             </div>
-                            </BreezeResponsiveNavLink>
                         </div>
 
                         <div class="mt-3 space-y-1">
@@ -173,6 +170,13 @@
                     </div>
                 </div>
             </nav>
+
+            <!-- Page Heading -->
+            <header class="bg-white " v-if="$slots.header">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <slot name="header" />
+                </div>
+            </header>
 
             <!-- Page Content -->
             <main>

@@ -7,7 +7,7 @@
         {{ status }}
     </div>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="m-4">
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput
