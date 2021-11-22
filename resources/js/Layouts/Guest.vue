@@ -2,10 +2,10 @@
     <div class="min-h-screen bg-header">
         <nav class="bg-header mx-4">
             <!-- Primary Navigation Menu -->       
-                    <div class="flex justify-between h-16">
+                    <div class="flex justify-between h-20">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
+                            <div class=" flex items-center">
                                 <Link :href="route('welcome')">
                                     <BreezeApplicationLogo
                                         class="block h-9 w-auto"

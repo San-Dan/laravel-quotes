@@ -2,19 +2,40 @@
     <Head title="Profile" />
 
     <BreezeAuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Welcome, {{ $page.props.auth.user.name }}
-            </h2>
-            
-        </template>
-
-        <div class="py-12">
+        <div class="p-10">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <!-- User's Account info -->
                     <div class="p-6 bg-white border-b border-gray-200">
-                        You're logged in! Vue Profile Page  
+                        <div class="flex p-4">
+                            <div class="flower-wrapper justify-center">
+                                <img src="../../images/flower2.svg" alt="flower illustration">
+                            </div>
+
+                            <div class="user-content flex flex-col justify-evenly pl-8">
+                                <h2
+                                    class="
+                                        font-semibold
+                                        text-xl text-dark
+                                        leading-tight
+                                    "
+                                >
+                                    Welcome, {{ $page.props.auth.user.name }}
+                                </h2>
+                                <p class="text-dark">0 Collections</p>
+                                <BreezeButton class="max-w-max">Edit info</BreezeButton>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!-- User's Collections -->
+                <div>
+                    <h2>Collections</h2> <br>
+                    <p>Get info on user's collections here. <br>
+                    If statement: if no collections - show div with dashed border and link <br></p>
+                    <BreezeNavLink :href="route('create.collection')">
+                        Create your first collection
+                    </BreezeNavLink>
                 </div>
             </div>
         </div>
@@ -23,13 +44,41 @@
 
 <script>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
+import BreezeNavLink from "@/Components/NavLink.vue";
+import BreezeButton from "@/Components/Button.vue";
+import BreezeCheckbox from "@/Components/Checkbox.vue";
+import BreezeInput from "@/Components/Input.vue";
+import BreezeLabel from "@/Components/Label.vue";
+import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head } from "@inertiajs/inertia-vue3";
-
 
 export default {
     components: {
         BreezeAuthenticatedLayout,
+        BreezeNavLink,
+        BreezeButton,
+        BreezeCheckbox,
+        BreezeInput,
+        BreezeLabel,
+        BreezeValidationErrors,
         Head,
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                email: "",
+                password: "",
+                remember: false,
+            }),
+        };
+    },
+
+    methods: {
+        // submit() {
+        //     this.form.post(this.route("profile"), {
+        //         onFinish: () => this.form.reset("password"),
+        //     });
+        // },
     },
 };
 </script>

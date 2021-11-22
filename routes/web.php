@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,27 @@ Route::get('/dashboard', function () {
 Route::get('/profile', function () {
     return Inertia::render('Profile');
 })->middleware(['auth', 'verified'])->name('profile');
+
+// Collection Routes
+Route::get('/create-collection', function () {
+    return Inertia::render('CreateCollection');
+})->middleware(['auth', 'verified'])->name('create.collection');
+
+// Route::get('/create-collection', [CollectionController::class, 'create'])
+//                 ->middleware(['auth', 'verified'])
+//                 ->name('create.collection');
+
+Route::post('/create-collection', [CollectionController::class, 'store'])
+                ->middleware(['auth', 'verified'])
+                ->name('new.collection');
+
+// Card Routes
+Route::get('/create-card', function () {
+            return Inertia::render('CreateCard');
+})->middleware(['auth', 'verified'])->name('create-card');
+                
+Route::post('/create-card', [CardController::class, 'store'])
+                ->middleware(['auth', 'verified'])
+                ->name('newcard');
 
 require __DIR__.'/auth.php';

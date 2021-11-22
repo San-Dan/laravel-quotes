@@ -4,7 +4,7 @@
             <nav class="bg-header mx-4">
                 <!-- Primary Navigation Menu -->
                 
-                    <div class="flex justify-end h-16">
+                    <div class="flex justify-end h-20">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
@@ -15,10 +15,11 @@
                                 </Link>
                                 
                             </div>
+                            
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <Button>Add Card</Button>
+                            <ButtonLink :href="route('create-card')">Add Card</ButtonLink>
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <BreezeDropdown align="right" width="48">
@@ -150,14 +151,9 @@
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
+                        <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('profile')">
-                            <div class="font-medium text-base text-gray-800">
-                                {{ $page.props.auth.user.name }}
-                            </div>
-                            <div class="font-medium text-sm text-gray-500">
-                                {{ $page.props.auth.user.email }}
-                            </div>
+                            Profile
                             </BreezeResponsiveNavLink>
                         </div>
 
@@ -196,7 +192,7 @@ import BreezeDropdown from "@/Components/Dropdown.vue";
 import BreezeDropdownLink from "@/Components/DropdownLink.vue";
 import BreezeNavLink from "@/Components/NavLink.vue";
 import BreezeResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import Button from "@/Components/Button.vue"
+import ButtonLink from "@/Components/ButtonLink.vue"
 import { Link } from "@inertiajs/inertia-vue3";
 
 export default {
@@ -207,7 +203,7 @@ export default {
         BreezeNavLink,
         BreezeResponsiveNavLink,
         Link,
-        Button
+        ButtonLink
     },
 
     data() {
