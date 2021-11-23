@@ -3,29 +3,30 @@
 
     <div class="min-h-screen bg-header">
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="flex flex-col p-6 bg-white border-b border-gray-200 text-color">
-                        <div>
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 sm:max-w-2xl md:max-w-4xl">
+                <div class="flex justify-center bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="flex flex-col justify-center items-center p-6 bg-white border-b border-gray-200 text-color">
+                        <div class="flex flex-col justify-evenly items-center sm:flex-row sm: justify-center">
                             <Link :href="route('welcome')">
                                     <BreezeApplicationLogo
-                                        class="block h-16 w-auto"
+                                        class="block h-40 sm:h-32 w-auto md:h-40"
                                     />
                                 </Link>
+                                <h1 class="text-2xl">MANTRA LIBRARY</h1>
                         </div>
-                        <div class="content">
-                            <h1>Welcome Page</h1>
+                        <div class="content py-10">
+                            
                             <p>
                                 Everyone needs a place of comfort when life feels messy. <br>
                                 Sign up to start sharing your own wisdom!
                             </p>
                             <br>
-                            <div class="flex justify-around">
-                                <ButtonLink :href="route('login')" >
+                            <div class="flex justify-center">
+                                <ButtonLink :href="route('login')" class="mx-3">
                                     LOGIN
                                 </ButtonLink>
                                 
-                                <ButtonLink :href="route('register')" >
+                                <ButtonLink :href="route('register')" class="mx-3">
                                     REGISTER
                                 </ButtonLink>
                                 </div>

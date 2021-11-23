@@ -1,15 +1,17 @@
 <template>
-    <div class="min-h-screen bg-header">
+    <div class="min-h-screen bg-header text-dark">
         <nav class="bg-header mx-4">
             <!-- Primary Navigation Menu -->       
-                    <div class="flex justify-between h-20">
+                    <div class="flex justify-center sm:justify-evenly h-20">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class=" flex items-center">
-                                <Link :href="route('welcome')">
+                            <div class="flex flex-row items-center">
+                                <Link :href="route('welcome')" class="flex flex-row items-center text-lg text-dark">
+                                <h1>MANTRA</h1>
                                     <BreezeApplicationLogo
-                                        class="block h-9 w-auto"
+                                        class="block h-16 w-auto"
                                     />
+                                    <h1>LIBRARY</h1>
                                 </Link>
                                 
                             </div>

@@ -2,14 +2,22 @@
     <Head title="Register" />
 
     <BreezeValidationErrors class="mb-4" />
+    <!-- <div class="flex flex-row justify-center w-full w-80% sm:max-w-2xl md:max-w-4xl"> -->
+        <form @submit.prevent="submit" class="m-4 md:ml-20%">
+            <div>
+                <BreezeLabel for="name" value="Name" />
+                <BreezeInput
+                    id="name"
+                    type="text"
+                    class="mt-1 block w-4/5 md:w-3/5"
+                    v-model="form.name"
+                    required
+                    autofocus
+                    autocomplete="name"
+                />
+            </div>
 
-    <form @submit.prevent="submit" class="m-4">
-        <div>
-            <BreezeLabel for="name" value="Name" />
-            <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
-        </div>
-
-        <!-- <div>
+            <!-- <div>
             <BreezeLabel for="firstname" value="Firstname" />
             <BreezeInput id="firstname" type="text" class="mt-1 block w-full" v-model="form.firstname" required autofocus autocomplete="given-name" />
         </div>
@@ -24,40 +32,72 @@
             <BreezeInput id="username" type="text" class="mt-1 block w-full" v-model="form.username"  autofocus />
         </div> -->
 
-        <div class="mt-4">
-            <BreezeLabel for="email" value="Email" />
-            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="email" />
-        </div>
+            <div class="mt-4">
+                <BreezeLabel for="email" value="Email" />
+                <BreezeInput
+                    id="email"
+                    type="email"
+                    class="mt-1 block w-4/5 md:w-3/5"
+                    v-model="form.email"
+                    required
+                    autocomplete="email"
+                />
+            </div>
 
-        <div class="mt-4">
-            <BreezeLabel for="password" value="Password" />
-            <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-        </div>
+            <div class="mt-4">
+                <BreezeLabel for="password" value="Password" />
+                <BreezeInput
+                    id="password"
+                    type="password"
+                    class="mt-1 block w-4/5 md:w-3/5"
+                    v-model="form.password"
+                    required
+                    autocomplete="new-password"
+                />
+            </div>
 
-        <div class="mt-4">
-            <BreezeLabel for="password_confirmation" value="Confirm Password" />
-            <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-        </div>
+            <div class="mt-4">
+                <BreezeLabel
+                    for="password_confirmation"
+                    value="Confirm Password"
+                />
+                <BreezeInput
+                    id="password_confirmation"
+                    type="password"
+                    class="mt-1 block w-4/5 md:w-3/5"
+                    v-model="form.password_confirmation"
+                    required
+                    autocomplete="new-password"
+                />
+            </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Already registered?
-            </Link>
+            <div class="flex items-center justify-end sm:justify-start mt-4">
+                <Link
+                    :href="route('login')"
+                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                >
+                    Already registered?
+                </Link>
 
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Register
-            </BreezeButton>
-        </div>
-    </form>
+                <BreezeButton
+                    class="ml-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    Register
+                </BreezeButton>
+            </div>
+        </form>
+    <!-- </div> -->
 </template>
 
 <script>
-import BreezeButton from '@/Components/Button.vue'
-import BreezeGuestLayout from '@/Layouts/Guest.vue'
-import BreezeInput from '@/Components/Input.vue'
-import BreezeLabel from '@/Components/Label.vue'
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import { Head, Link } from '@inertiajs/inertia-vue3';
+import BreezeButton from "@/Components/Button.vue";
+import BreezeGuestLayout from "@/Layouts/Guest.vue";
+import BreezeInput from "@/Components/Input.vue";
+import BreezeLabel from "@/Components/Label.vue";
+import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 
 export default {
     layout: BreezeGuestLayout,
@@ -74,21 +114,22 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                name: '',
-                email: '',
-                password: '',
-                password_confirmation: '',
+                name: "",
+                email: "",
+                password: "",
+                password_confirmation: "",
                 terms: false,
-            })
-        }
+            }),
+        };
     },
 
     methods: {
         submit() {
-            this.form.post(this.route('register'), {
-                onFinish: () => this.form.reset('password', 'password_confirmation'),
-            })
-        }
-    }
-}
+            this.form.post(this.route("register"), {
+                onFinish: () =>
+                    this.form.reset("password", "password_confirmation"),
+            });
+        },
+    },
+};
 </script>

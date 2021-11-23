@@ -36,13 +36,13 @@ Route::get('/profile', function () {
 })->middleware(['auth', 'verified'])->name('profile');
 
 // Collection Routes
-Route::get('/create-collection', function () {
-    return Inertia::render('CreateCollection');
-})->middleware(['auth', 'verified'])->name('create.collection');
+// Route::get('/create-collection', function () {
+//     return Inertia::render('CreateCollection');
+// })->middleware(['auth', 'verified'])->name('create.collection');
 
-// Route::get('/create-collection', [CollectionController::class, 'create'])
-//                 ->middleware(['auth', 'verified'])
-//                 ->name('create.collection');
+Route::get('/create-collection', [CollectionController::class, 'create'])
+                ->middleware(['auth', 'verified'])
+                ->name('create.collection');
 
 Route::post('/create-collection', [CollectionController::class, 'store'])
                 ->middleware(['auth', 'verified'])

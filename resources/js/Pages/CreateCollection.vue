@@ -3,8 +3,8 @@
 
     <BreezeAuthenticatedLayout>
         <div class="p-10">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:max-w-2xl md:max-w-4xl">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg rounded-md">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <h2
                             class="
@@ -15,25 +15,24 @@
                         >
                             Create new collection
                         </h2>
-                        <form @submit.prevent="submit" class="m-4">
-                            <div>
-                                <BreezeLabel for="name" value="Name" />
+                        <form @submit.prevent="submitCollection" class="m-4">
+                            <div class="mt-4">
+                                <BreezeLabel for="name" value="Name of collection" />
                                 <BreezeInput
                                     id="name"
                                     type="text"
-                                    class="mt-1 block w-full"
+                                    class="mt-1 block w-4/5 md:w-3/5"
                                     v-model="form.name"
                                     required
                                     autofocus
                                 />
                             </div>
 
-                            <div>
+                            <!-- <div>
                                 <BreezeLabel
                                     for="bgcolor"
                                     value="Background Color"
                                 />
-                                <!-- <input type="color" name="blue" id="bgcolor"> -->
                                 <select id="bgcolor" v-model="form.selected">
                                     <option disabled value="">
                                         Please select one
@@ -46,29 +45,47 @@
                                     <option value="yellow">Yellow</option>
                                     <option value="purple">Purple</option>
                                 </select> 
-                                <!-- <p>Selected color: {{ selected }}</p> -->
-                            </div>
+                            </div> -->
 
-                            <div>
+                            <div class="my-4">
+                                <!-- <BreezeLabel
+                                    for="public"
+                                    value="Public or Private Collection?"
+                                />
+                                <input type="radio" id="public" value="true" v-model="form.picked" />
+                                <label for="public">Public</label>
+                                <br />
+                                <input type="radio" id="private" value="false" v-model="form.picked" />
+                                <label for="private">Private</label>
+                                <br /> -->
+                                <!-- <span>Picked: {{ picked }}</span> -->
+
                                 <BreezeLabel
                                     for="public"
-                                    value="Public Collection"
+                                    value="Public or Private Collection"
                                 />
                                 <input
                                     type="checkbox"
                                     id="public"
                                     v-model="form.public"
+                                    class="ml-2"
                                 />
-                                <label for="public">Yes, make public</label>
+                                <label for="public" class="ml-2">Yes, make public</label>
+                                <br> <br>
+                                <span>Public: {{ form.public }}</span>
                             </div>
-
+                            <div class="my-4 flex flex-row">
                             <BreezeButton
-                                class="ml-4"
+                                
                                 :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing"
                             >
                                 Submit
                             </BreezeButton>
+                            <Link :href="route('profile')" class="underline text-sm text-dark hover:text-gray-900 ml-6 mt-4">
+                                Cancel, back to profile
+                            </Link>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -84,7 +101,7 @@ import BreezeCheckbox from "@/Components/Checkbox.vue";
 import BreezeInput from "@/Components/Input.vue";
 import BreezeLabel from "@/Components/Label.vue";
 // import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 // import { reactive } from "vue";
 
 export default {
@@ -96,30 +113,32 @@ export default {
         BreezeLabel,
         // BreezeValidationErrors,
         Head,
-        // reactive,
+        Link
     },
 
-    // setup() {
-    //     const form = reactive({
-    //         name: null,
-    //         bgcolor: "blue",
-    //         public: false,
-    //     });
-    // },
-
-    data() 
-    { return {
+    data() {
+        return {
             form: this.$inertia.form({
                 name: "",
-                selected: "",
+                // selected: "",
                 public: false,
             }),
         };
     },
 
     methods: {
-        submit() {
-            this.form.post(this.route("new.collection"));
+        submitCollection() {
+            // let data = new FormData();
+            // data.append("name", this.form.name);
+            // // data.append('selected', this.form.selected);
+            // data.append("public", this.form.public);
+            let formData = this.form;
+
+            console.log(formData);
+
+            // this.$inertia.post(this.route("new.collection"), formData);
+
+            this.form.post(this.route("new.collection"), formData);
         },
     },
 };

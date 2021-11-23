@@ -1,17 +1,19 @@
 <template>
     <div>
-        <div class="min-h-screen bg-header">
-            <nav class="bg-header mx-4">
-                <!-- Primary Navigation Menu -->
-                
-                    <div class="flex justify-end h-20">
-                        <div class="flex">
+        <div class="min-h-screen bg-header text-dark">
+            <nav class="bg-header ">
+                <!-- Primary Navigation Menu -->               
+                    <div class="flex justify-center sm:justify-evenly h-20 sm:h-36">
+                        <div class="w-10 sm:w-60"></div>
+                        <div class="flex mr-6">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                            <div class="flex flex-row items-center">
+                                <Link :href="route('dashboard')" class="flex flex-row items-center text-lg text-dark">
+                                <h1>MANTRA</h1>
                                     <BreezeApplicationLogo
-                                        class="block h-9 w-auto"
+                                        class="block h-16 w-auto sm:h-28"
                                     />
+                                    <h1>LIBRARY</h1>
                                 </Link>
                                 
                             </div>
@@ -104,10 +106,11 @@
                                     transition
                                     duration-150
                                     ease-in-out
+                                    bg-header
                                 "
                             >
                                 <svg
-                                    class="h-6 w-6"
+                                    class="h-6 w-6 text-dark bg-header"
                                     stroke="currentColor"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -150,7 +153,12 @@
                 >
 
                     <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div class="pt-4 pb-1 border border-gray-400">
+                        <div class="mt-3 space-y-1">
+                            <BreezeResponsiveNavLink :href="route('create-card')">
+                            Add Card
+                            </BreezeResponsiveNavLink>
+                        </div>
                         <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('profile')">
                             Profile

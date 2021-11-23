@@ -7,13 +7,13 @@
         {{ status }}
     </div>
 
-    <form @submit.prevent="submit" class="m-4">
+    <form @submit.prevent="submit" class="m-4 text-dark">
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput
                 id="email"
                 type="email"
-                class="mt-1 block w-full"
+                class="mt-1 block w-4/5 md:w-3/5"
                 v-model="form.email"
                 required
                 autofocus
@@ -26,7 +26,7 @@
             <BreezeInput
                 id="password"
                 type="password"
-                class="mt-1 block w-full"
+                class="mt-1 block w-4/5 md:w-3/5"
                 v-model="form.password"
                 required
                 autocomplete="current-password"
@@ -43,11 +43,11 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end sm:justify-start mt-4">
             <Link
                 v-if="canResetPassword"
                 :href="route('password.request')"
-                class="underline text-sm text-gray-600 hover:text-gray-900"
+                class="underline text-sm text-dark hover:text-gray-900"
             >
                 Forgot your password?
             </Link>

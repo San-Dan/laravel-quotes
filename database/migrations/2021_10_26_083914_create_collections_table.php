@@ -18,10 +18,10 @@ class CreateCollectionsTable extends Migration
                 $table->string('name');
                 $table->unsignedBigInteger('user_id');
                 $table->foreign('user_id')->references('id')->on('users');
-                $table->string('bg_color');
-                $table->boolean('public');
+                // $table->string('bg_color')->default('blue');
+                $table->boolean('public')->default(false);
                 $table->timestamps();
-                $table->softDeletes();
+                // $table->softDeletes();
         });
     }
 

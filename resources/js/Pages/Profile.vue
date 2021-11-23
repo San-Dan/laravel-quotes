@@ -3,8 +3,8 @@
 
     <BreezeAuthenticatedLayout>
         <div class="p-10">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 sm:max-w-2xl md:max-w-4xl">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                     <!-- User's Account info -->
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex p-4">
@@ -12,27 +12,28 @@
                                 <img src="../../images/flower2.svg" alt="flower illustration">
                             </div>
 
-                            <div class="user-content flex flex-col justify-evenly pl-8">
-                                <h2
+                            <div class="user-content flex flex-col  pl-8">
+                                <h1
                                     class="
                                         font-semibold
                                         text-xl text-dark
                                         leading-tight
                                     "
                                 >
-                                    Welcome, {{ $page.props.auth.user.name }}
-                                </h2>
-                                <p class="text-dark">0 Collections</p>
-                                <BreezeButton class="max-w-max">Edit info</BreezeButton>
+                               Welcome, {{ $page.props.auth.user.name }}
+                                </h1>
+                                <p class="text-dark ml-2"> {{ $page.props.auth.user.email }}</p>
+                                <p class="text-dark mt-8">0 Collections</p>
+                                <BreezeButton class="max-w-max mt-8 ">Edit info</BreezeButton>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- User's Collections -->
-                <div>
+                <div class="font-semibold text-xl text-dark leading-tight mt-10">
                     <h2>Collections</h2> <br>
                     <p>Get info on user's collections here. <br>
-                    If statement: if no collections - show div with dashed border and link <br></p>
+                        If statement: if no collections - show div with dashed border and link <br></p>
                     <BreezeNavLink :href="route('create.collection')">
                         Create your first collection
                     </BreezeNavLink>

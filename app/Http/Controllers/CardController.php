@@ -3,18 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * Docs Queries: https://laravel.com/docs/8.x/queries#joins
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        // $collections = Collection::query()
+        //     ->select('id')
+        //     ->where('public', '=', 1)
+        //     ->get();
+
+        // $cards = Card::query()
+        //     ->where('collection_id', '=', $collections->id())
+        //     ->orderByDesc('created_at')
+        //     ->get();
+
+        $cards= DB::table('cards')
+            ->join('collections', function ($join) {
+                $join->on('cards.collection_id', '=', 'collections.id')
+                     ->where('collections.public', '=', 1);
+            })
+            ->get();
+
     }
 
     /**

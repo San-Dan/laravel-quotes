@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
-use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
-use Inertia\Inertia;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
+use Inertia\Inertia;
 
 class CollectionController extends Controller
 {
@@ -18,7 +18,10 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        $collections = Collection::query()
+            ->where('user_id', '=', Auth::id())
+            ->orderByAsc('name')
+            ->get();
     }
 
     /**
@@ -39,22 +42,25 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:55',
-            'selected' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:55',
+        //     // 'selected' => 'required',
+        // ]);
         
-        Collection::create([
-            'name' => $request->name,
-            'user_id' => Auth::user->id(),
-            'bgcolor' => $request->selected,
-            'public' => $request->public,
-        ]);
+        console.log($request->input('name'));
+        console.log($request->input('public'));
+        
+        // Collection::create([
+        //     'name' => $request->input('name'),
+        //     // 'user_id' => Auth::user->id(),
+        //     // 'bgcolor' => $request->input('selected'),
+        //     'public' => $request->input('public'),
+        // ]);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
 
 
-        // Eller såhär enligt Inerta docs? Byt namnen.
+        // Eller såhär enligt Inertia docs? Byt namnen.
         // User::create(
         //     Request::validate([
         //         'first_name' => ['required', 'max:50'],
@@ -67,7 +73,7 @@ class CollectionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified (1) resource.
      *
      * @param  \App\Models\Collection  $collection
      * @return \Illuminate\Http\Response
