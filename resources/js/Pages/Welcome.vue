@@ -12,7 +12,7 @@
                                         class="block h-40 sm:h-32 w-auto md:h-40"
                                     />
                                 </Link>
-                                <h1 class="text-2xl">MANTRA LIBRARY</h1>
+                                <h1 class="logo-font text-3xl">MANTRA <br>LIBRARY</h1>
                         </div>
                         <div class="content py-10">
                             

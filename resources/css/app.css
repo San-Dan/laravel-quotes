@@ -33,3 +33,7 @@
   .bg-beige {
     background-color: var(--bg-white);
   }
+
+  .logo-font {
+    font-family: 'Palanquin', sans-serif;
+  }

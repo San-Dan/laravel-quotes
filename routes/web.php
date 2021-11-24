@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,14 +59,10 @@ Route::post('/create-collection', [CollectionController::class, 'store'])
 
 // CARD ROUTES
 //---------------------------------------
-// Route::get('/create-card', [CardController::class, 'create'])
-//                 ->middleware(['auth', 'verified'])
-//                 ->name('create.card');
+Route::get('/create-card', [CardController::class, 'create'])
+                ->middleware(['auth', 'verified'])
+                ->name('create.card');
 
-Route::get('/create-card', function () {
-            return Inertia::render('CreateCard');
-        })->middleware(['auth', 'verified'])->name('create.card');
-                
 Route::post('/create-card', [CardController::class, 'store'])
                 ->middleware(['auth', 'verified'])
                 ->name('new.card');

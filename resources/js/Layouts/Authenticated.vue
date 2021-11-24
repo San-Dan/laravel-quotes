@@ -16,11 +16,11 @@
                                     text-lg text-dark
                                 "
                             >
-                                <h1>MANTRA</h1>
+                                <h1 class="logo-font text-3xl">MANTRA</h1>
                                 <BreezeApplicationLogo
                                     class="block h-16 w-auto sm:h-28"
                                 />
-                                <h1>LIBRARY</h1>
+                                <h1 class="logo-font text-3xl">LIBRARY</h1>
                             </Link>
                         </div>
                     </div>

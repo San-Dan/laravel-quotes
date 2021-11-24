@@ -15,7 +15,7 @@
                             <div class="user-content flex flex-col  pl-8">
                                 <h1
                                     class="
-                                        font-semibold
+                                        font-semibold 
                                         text-xl text-dark
                                         leading-tight
                                     "

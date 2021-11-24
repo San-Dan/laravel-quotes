@@ -22,7 +22,6 @@ class CollectionController extends Controller
     public function index()
     {
         
-        //  ALT 2
             return Inertia::render('Profile', [
                 'collections' => Collection::all()->map(function ($collection) {
                     return [

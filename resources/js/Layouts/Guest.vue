@@ -2,16 +2,17 @@
     <div class="min-h-screen bg-header text-dark">
         <nav class="bg-header mx-4">
             <!-- Primary Navigation Menu -->       
-                    <div class="flex justify-center sm:justify-evenly h-20">
-                        <div class="flex">
+                    <div class="flex justify-center sm:justify-evenly h-20 sm:h-36">
+                        <div class="w-10 sm:block sm:w-46 md:block md:w-58"></div>
+                        <div class="flex mr-6">
                             <!-- Logo -->
                             <div class="flex flex-row items-center">
                                 <Link :href="route('welcome')" class="flex flex-row items-center text-lg text-dark">
-                                <h1>MANTRA</h1>
+                                <h1 class="logo-font text-3xl">MANTRA</h1>
                                     <BreezeApplicationLogo
-                                        class="block h-16 w-auto"
+                                        class="block h-16 w-auto sm:h-24"
                                     />
-                                    <h1>LIBRARY</h1>
+                                    <h1 class="logo-font text-3xl">LIBRARY</h1>
                                 </Link>
                                 
                             </div>
