@@ -22,6 +22,7 @@
                                 >
                                Welcome, {{ $page.props.auth.user.name }}
                                 </h1>
+
                                 <p class="text-dark ml-2"> {{ $page.props.auth.user.email }}</p>
                                 <p class="text-dark mt-8">0 Collections</p>
                                 <BreezeButton class="max-w-max mt-8 ">Edit info</BreezeButton>
@@ -30,8 +31,8 @@
                     </div>
                 </div>
                 <!-- User's Collections -->
-                <div class="font-semibold text-xl text-dark leading-tight mt-10">
-                    <h2>Collections</h2> <br>
+                <div class="text-dark leading-tight mt-10">
+                    <h2 class="font-semibold text-xl">Collections</h2> <br>
                     <p>Get info on user's collections here. <br>
                         If statement: if no collections - show div with dashed border and link <br></p>
                     <BreezeNavLink :href="route('create.collection')">
@@ -63,6 +64,9 @@ export default {
         BreezeLabel,
         BreezeValidationErrors,
         Head,
+    },
+    props: {
+        collections: Array
     },
     data() {
         return {

@@ -13,8 +13,8 @@ class Collection extends Model
 
     protected $fillable = [
         'name', 
-        // 'user_id', 
-        // 'bg_color',
+        'user_id', 
+        'bgcolor',
         'public'
     ];
 

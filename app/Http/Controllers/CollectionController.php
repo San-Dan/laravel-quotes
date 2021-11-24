@@ -9,19 +9,49 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 
+
 class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * !! Show current user's collection on Profile
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $collections = Collection::query()
-            ->where('user_id', '=', Auth::id())
-            ->orderByAsc('name')
-            ->get();
+        
+        //  ALT 2
+            return Inertia::render('Profile', [
+                'collections' => Collection::all()->map(function ($collection) {
+                    return [
+                        'id' => $collection->id,
+                        'name' => $collection->name,
+                        'bgcolor' => $collection->bgcolor,
+                        'public' => $collection->public,
+                    ];
+                }),
+            ]);
+
+        // $collections = Collection::where('user_id', Auth::user()->id)
+        //                 ->orderBy('name')
+        //                 ->get();
+
+        
+
+            // if (!$collections) {
+            //     return Inertia::render('Dashboard');
+            // } else {
+
+            //     return Inertia::render('Profile', [
+            //         'collections' => $collections
+                   
+            //     ]);
+            // }
+            
+
+        
     }
 
     /**
@@ -42,45 +72,49 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:55',
-        //     // 'selected' => 'required',
-        // ]);
+        // die(var_dump($user_id));
+
+        $request->validate([
+            'name' => 'required|string|max:55',
+            'selected' => 'required'
+        ]);
+
+        Collection::create([
+            'name' => $request->input('name'),
+            'user_id' => Auth::user()->id,
+            'bgcolor' => $request->input('selected'),
+            'public' => $request->input('public'),
+        ]);
+
+        return redirect(RouteServiceProvider::HOME);
         
-        console.log($request->input('name'));
-        console.log($request->input('public'));
         
-        // Collection::create([
-        //     'name' => $request->input('name'),
-        //     // 'user_id' => Auth::user->id(),
-        //     // 'bgcolor' => $request->input('selected'),
-        //     'public' => $request->input('public'),
-        // ]);
-
-        // return redirect(RouteServiceProvider::HOME);
-
-
         // Eller såhär enligt Inertia docs? Byt namnen.
-        // User::create(
+        // Collection::create(
         //     Request::validate([
-        //         'first_name' => ['required', 'max:50'],
-        //         'last_name' => ['required', 'max:50'],
-        //         'email' => ['required', 'max:50', 'email'],
+        //         'name' => ['required', 'max:50'],
+                // 'last_name' => ['required', 'max:50'],
+                // 'email' => ['required', 'max:50', 'email'],
         //     ])
         // );
+        // ((return redirect(RouteServiceProvider::HOME);))
 
         // return Redirect::route('users.index'); <-- byt till profile
     }
 
     /**
      * Display the specified (1) resource.
+     * 
+     * Ex in docs: https://inertiajs.com/responses
      *
      * @param  \App\Models\Collection  $collection
      * @return \Illuminate\Http\Response
      */
     public function show(Collection $collection)
     {
-        //
+        // return Inertia::render('Collection', [
+        //     'collection' => $collection->only('id', 'name', 'public'),
+        // ]);
     }
 
     /**

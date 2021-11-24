@@ -1,6 +1,8 @@
 <template>
     <Head title="New Collection" />
 
+    <BreezeValidationErrors class="mb-4" />
+
     <BreezeAuthenticatedLayout>
         <div class="p-10">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:max-w-2xl md:max-w-4xl">
@@ -28,7 +30,7 @@
                                 />
                             </div>
 
-                            <!-- <div>
+                            <div>
                                 <BreezeLabel
                                     for="bgcolor"
                                     value="Background Color"
@@ -37,29 +39,15 @@
                                     <option disabled value="">
                                         Please select one
                                     </option>
-                                    <option >
-                                        Blue
-                                    </option>
+                                    <option value="blue">Blue</option>
                                     <option value="green">Green</option>
                                     <option value="pink">Pink</option>
                                     <option value="yellow">Yellow</option>
                                     <option value="purple">Purple</option>
                                 </select> 
-                            </div> -->
+                            </div>
 
-                            <div class="my-4">
-                                <!-- <BreezeLabel
-                                    for="public"
-                                    value="Public or Private Collection?"
-                                />
-                                <input type="radio" id="public" value="true" v-model="form.picked" />
-                                <label for="public">Public</label>
-                                <br />
-                                <input type="radio" id="private" value="false" v-model="form.picked" />
-                                <label for="private">Private</label>
-                                <br /> -->
-                                <!-- <span>Picked: {{ picked }}</span> -->
-
+                            <div class="my-4">                                
                                 <BreezeLabel
                                     for="public"
                                     value="Public or Private Collection"
@@ -100,9 +88,8 @@ import BreezeButton from "@/Components/Button.vue";
 import BreezeCheckbox from "@/Components/Checkbox.vue";
 import BreezeInput from "@/Components/Input.vue";
 import BreezeLabel from "@/Components/Label.vue";
-// import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
+import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-// import { reactive } from "vue";
 
 export default {
     components: {
@@ -111,7 +98,7 @@ export default {
         BreezeCheckbox,
         BreezeInput,
         BreezeLabel,
-        // BreezeValidationErrors,
+        BreezeValidationErrors,
         Head,
         Link
     },
@@ -120,7 +107,7 @@ export default {
         return {
             form: this.$inertia.form({
                 name: "",
-                // selected: "",
+                selected: "",
                 public: false,
             }),
         };
@@ -128,17 +115,14 @@ export default {
 
     methods: {
         submitCollection() {
-            // let data = new FormData();
-            // data.append("name", this.form.name);
-            // // data.append('selected', this.form.selected);
-            // data.append("public", this.form.public);
+            
             let formData = this.form;
 
             console.log(formData);
 
-            // this.$inertia.post(this.route("new.collection"), formData);
+            this.$inertia.post(this.route("new.collection"), formData);
 
-            this.form.post(this.route("new.collection"), formData);
+            // this.form.post(this.route("new.collection"));
         },
     },
 };

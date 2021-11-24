@@ -31,14 +31,21 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+// PROFILE ROUTES, testing
 Route::get('/profile', function () {
     return Inertia::render('Profile');
 })->middleware(['auth', 'verified'])->name('profile');
 
+// Route::get('/profile', [CollectionController::class, 'index'])
+//                 ->middleware(['auth', 'verified'])
+//                 ->name('profile');
+
 // Collection Routes
-// Route::get('/create-collection', function () {
-//     return Inertia::render('CreateCollection');
-// })->middleware(['auth', 'verified'])->name('create.collection');
+//----------------------------------------
+        // Route::get('/create-collection', function () {
+        //     return Inertia::render('CreateCollection');
+        // })->middleware(['auth', 'verified'])->name('create.collection');
 
 Route::get('/create-collection', [CollectionController::class, 'create'])
                 ->middleware(['auth', 'verified'])
@@ -48,13 +55,18 @@ Route::post('/create-collection', [CollectionController::class, 'store'])
                 ->middleware(['auth', 'verified'])
                 ->name('new.collection');
 
-// Card Routes
+// CARD ROUTES
+//---------------------------------------
+// Route::get('/create-card', [CardController::class, 'create'])
+//                 ->middleware(['auth', 'verified'])
+//                 ->name('create.card');
+
 Route::get('/create-card', function () {
             return Inertia::render('CreateCard');
-})->middleware(['auth', 'verified'])->name('create-card');
+        })->middleware(['auth', 'verified'])->name('create.card');
                 
 Route::post('/create-card', [CardController::class, 'store'])
                 ->middleware(['auth', 'verified'])
-                ->name('newcard');
+                ->name('new.card');
 
 require __DIR__.'/auth.php';

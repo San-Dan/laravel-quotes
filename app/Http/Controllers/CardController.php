@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\Collection;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
+use Inertia\Inertia;
 
 class CardController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * !! Show all public cards in Dashboard !!
      * 
      * Docs Queries: https://laravel.com/docs/8.x/queries#joins
      *
@@ -17,6 +23,7 @@ class CardController extends Controller
      */
     public function index()
     {
+        // ALT 1
         // $collections = Collection::query()
         //     ->select('id')
         //     ->where('public', '=', 1)
@@ -27,12 +34,25 @@ class CardController extends Controller
         //     ->orderByDesc('created_at')
         //     ->get();
 
-        $cards= DB::table('cards')
-            ->join('collections', function ($join) {
-                $join->on('cards.collection_id', '=', 'collections.id')
-                     ->where('collections.public', '=', 1);
-            })
-            ->get();
+        //  ALT 2
+        //     return Inertia::render('Dashboard', [
+        //         'cards' => Card::all()->map(function ($card) {
+        //             return [
+        //                 'id' => $card->id,
+        //                 'name' => $card->name,
+        //                 'content' => $card->content,
+        //             ];
+        //         }),
+        //     ]);
+        
+
+        // ALT 3
+        // $cards= DB::table('cards')
+        //     ->join('collections', function ($join) {
+        //         $join->on('cards.collection_id', '=', 'collections.id')
+        //              ->where('collections.public', '=', 1);
+        //     })
+        //     ->get();
 
     }
 
@@ -43,7 +63,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('CreateCard');
     }
 
     /**
@@ -54,7 +74,23 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:55',
+            'image' => 'required',
+            'fontstyle' => 'required',
+            'content' => 'required|string|max:80'
+        ]);
+
+        Collection::create([
+            'name' => $request->input('name'),            
+            // 'collection_id' => ,
+            'user_id' => Auth::user()->id,
+            'content' => $request->input('content'),
+            'image' => $request->input('image'),
+            'fontstyle' => $request->input('fontstyle')
+        ]);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**
