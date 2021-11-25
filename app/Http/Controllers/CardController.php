@@ -17,7 +17,7 @@ class CardController extends Controller
      * 
      * !! Show all public cards in Dashboard !!
      * 
-     * Docs Queries: https://laravel.com/docs/8.x/queries#joins
+     * Docs Queries: https://laravel.com/docs/8.x/queries#joins 
      *
      * @return \Illuminate\Http\Response
      */

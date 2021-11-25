@@ -1,19 +1,20 @@
 <template>
     <Head title="Log in" />
 
-    <BreezeValidationErrors class="mb-4" />
+    
 
     <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
         {{ status }}
     </div>
-
-    <form @submit.prevent="submit" class="m-4 text-dark">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+    <BreezeValidationErrors class="mb-4" />
+    <form @submit.prevent="submit" class="m-4 text-dark w-2/5 ">
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput
                 id="email"
                 type="email"
-                class="mt-1 block w-4/5 md:w-3/5"
+                class="mt-1 block w-full"
                 v-model="form.email"
                 required
                 autofocus
@@ -26,7 +27,7 @@
             <BreezeInput
                 id="password"
                 type="password"
-                class="mt-1 block w-4/5 md:w-3/5"
+                class="mt-1 block w-full"
                 v-model="form.password"
                 required
                 autocomplete="current-password"
@@ -61,6 +62,7 @@
             </BreezeButton>
         </div>
     </form>
+    </div>
 </template>
 
 <script>

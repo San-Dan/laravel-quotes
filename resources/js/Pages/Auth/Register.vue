@@ -1,15 +1,15 @@
 <template>
     <Head title="Register" />
 
-    <BreezeValidationErrors class="mb-4" />
-    <!-- <div class="flex flex-row justify-center w-full w-80% sm:max-w-2xl md:max-w-4xl"> -->
-        <form @submit.prevent="submit" class="m-4 md:ml-20%">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex flex-col justify-center items-center">
+        <BreezeValidationErrors class="mb-4" />
+        <form @submit.prevent="submit" class="m-4 text-dark w-2/5">
             <div>
                 <BreezeLabel for="name" value="Name" />
                 <BreezeInput
                     id="name"
                     type="text"
-                    class="mt-1 block w-4/5 md:w-3/5"
+                    class="mt-1 block w-full"
                     v-model="form.name"
                     required
                     autofocus
@@ -17,27 +17,12 @@
                 />
             </div>
 
-            <!-- <div>
-            <BreezeLabel for="firstname" value="Firstname" />
-            <BreezeInput id="firstname" type="text" class="mt-1 block w-full" v-model="form.firstname" required autofocus autocomplete="given-name" />
-        </div>
-
-        <div>
-            <BreezeLabel for="lastname" value="Lastname" />
-            <BreezeInput id="lastname" type="text" class="mt-1 block w-full" v-model="form.lastname"  autofocus autocomplete="family-name" />
-        </div>
-
-        <div>
-            <BreezeLabel for="username" value="Username" />
-            <BreezeInput id="username" type="text" class="mt-1 block w-full" v-model="form.username"  autofocus />
-        </div> -->
-
             <div class="mt-4">
                 <BreezeLabel for="email" value="Email" />
                 <BreezeInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-4/5 md:w-3/5"
+                    class="mt-1 block w-full"
                     v-model="form.email"
                     required
                     autocomplete="email"
@@ -49,7 +34,7 @@
                 <BreezeInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-4/5 md:w-3/5"
+                    class="mt-1 block w-full"
                     v-model="form.password"
                     required
                     autocomplete="new-password"
@@ -64,7 +49,7 @@
                 <BreezeInput
                     id="password_confirmation"
                     type="password"
-                    class="mt-1 block w-4/5 md:w-3/5"
+                    class="mt-1 block w-full"
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"
@@ -88,7 +73,7 @@
                 </BreezeButton>
             </div>
         </form>
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>

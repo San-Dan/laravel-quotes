@@ -1,8 +1,8 @@
-<svg width="373" height="421" viewBox="0 0 373 421" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<circle cx="228.686" cy="278.693" r="130.555" transform="rotate(0.504241 228.686 278.693)" fill="#9CB2BF"/>
-<rect x="10" y="9" width="362.487" height="412" fill="url(#pattern0)"/>
-<circle cx="110.509" cy="113.173" r="88.9614" transform="rotate(0.516507 110.509 113.173)" fill="#DFB5A6"/>
-<rect width="364.616" height="421" fill="url(#pattern1)"/>
+<svg width="814" height="919" viewBox="0 0 814 919" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<circle cx="499.197" cy="608.358" r="284.987" transform="rotate(0.504241 499.197 608.358)" fill="#9CB2BF"/>
+<rect x="21.829" y="19.646" width="791.272" height="899.354" fill="url(#pattern0)"/>
+<circle cx="241.231" cy="247.044" r="194.194" transform="rotate(0.516507 241.231 247.044)" fill="#DFB5A6"/>
+<rect width="795.919" height="919" fill="url(#pattern1)"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_328_1024" transform="translate(-0.161755 -0.0643654) scale(0.00166392 0.00146395)"/>

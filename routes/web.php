@@ -35,13 +35,13 @@ Route::get('/dashboard', function () {
 
 
 // PROFILE ROUTES, testing
-Route::get('/profile', function () {
-    return Inertia::render('Profile');
-})->middleware(['auth', 'verified'])->name('profile');
+// Route::get('/profile', function () {
+//     return Inertia::render('Profile');
+// })->middleware(['auth', 'verified'])->name('profile');
 
-// Route::get('/profile', [CollectionController::class, 'index'])
-//                 ->middleware(['auth', 'verified'])
-//                 ->name('profile');
+Route::get('/profile', [CollectionController::class, 'index'])
+                ->middleware(['auth', 'verified'])
+                ->name('profile');
 
 // Collection Routes
 //----------------------------------------

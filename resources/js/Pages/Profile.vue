@@ -33,11 +33,17 @@
                 <!-- User's Collections -->
                 <div class="text-dark leading-tight mt-10">
                     <h2 class="font-semibold text-xl">Collections</h2> <br>
-                    <p>Get info on user's collections here. <br>
-                        If statement: if no collections - show div with dashed border and link <br></p>
-                    <BreezeNavLink :href="route('create.collection')">
-                        Create your first collection
-                    </BreezeNavLink>
+
+                    <div class="border-dashed border-gray-300 border-2 rounded bg-white p-4 max-w-max h-16">
+                        <BreezeNavLink :href="route('create.collection')">
+                            Create your first collection
+                        </BreezeNavLink>
+                    </div>
+                    <!-- <ul v-for="collection in collections.data" :key="collection.id">
+                        <li>
+                            {{ collection.name }}
+                        </li>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -65,9 +71,9 @@ export default {
         BreezeValidationErrors,
         Head,
     },
-    props: {
-        collections: Array
-    },
+    // props: {
+    //     collections: Object
+    // },
     data() {
         return {
             form: this.$inertia.form({

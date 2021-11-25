@@ -21,35 +21,47 @@ class CollectionController extends Controller
      */
     public function index()
     {
+        // Bara visa profil-sidan funkar (rad nedan)
+         
+         return Inertia::render('Profile'); 
         
-            return Inertia::render('Profile', [
-                'collections' => Collection::all()->map(function ($collection) {
-                    return [
-                        'id' => $collection->id,
-                        'name' => $collection->name,
-                        'bgcolor' => $collection->bgcolor,
-                        'public' => $collection->public,
-                    ];
-                }),
-            ]);
+        
+        
+        // RÄTT SÄTT ENLIGT INERTIA DEMO APP, funkar ej än...
+            // return Inertia::render('Profile', [
+            //     'collections' => Auth::user()->collections()
+            //         ->orderByName();
+            //         ->paginate(10)
+            //         ->withQueryString()
+            //         ->through(fn $collection) =>  [
+            //             'id' => $collection->id,
+            //             'name' => $collection->name,
+            //             'bgcolor' => $collection->bgcolor,
+            //             'public' => $collection->public,
+            //         ];
+                
+            // ]);
 
-        // $collections = Collection::where('user_id', Auth::user()->id)
+        // Fel sätt tydligen
+        //-------------        
+
+        // Alt 1
+        // $collections = Collection::query()
+        //     ->where('user_id', '=', Auth::user()->id)            
+        //     ->get();
+        
+        // // // Alt 2
+        // $collections = DB::table('collections')->where('user_id', '=', Auth::user()->id)
         //                 ->orderBy('name')
         //                 ->get();
-
         
-
-            // if (!$collections) {
-            //     return Inertia::render('Dashboard');
-            // } else {
-
-            //     return Inertia::render('Profile', [
-            //         'collections' => $collections
-                   
-            //     ]);
-            // }
-            
-
+        // // // Alt 3               
+        // $collections = Collection::where('user_id', '=', Auth::user()->id)
+        // ->orderBy('name')
+        // ->get();        
+        
+        // // Alt 4
+        // $collections = Collection::all();   
         
     }
 

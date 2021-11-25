@@ -34,5 +34,5 @@ class User extends Authenticatable
 
     public function collections() {
         return $this->hasMany(Collection::class);
-    }
+    } 
 }

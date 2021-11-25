@@ -21,7 +21,7 @@ class Card extends Model
     ];
 
         public function collection() {
-            return $this->hasOne(Collection::class);
+            return $this->belongsTo(Collection::class);
         }
 
         public function user() {
